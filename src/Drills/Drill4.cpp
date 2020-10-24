@@ -7,6 +7,7 @@ int main()
 	double small=0;
 	int numberofvalues=0;
 	double sumofvalues=0;
+	int invalidnumbers=0;
 	vector <double> allvalues;
 	char unit=' ';
 	constexpr double metercm = 0.01;
@@ -17,7 +18,7 @@ cin >> values;
 	large=values;
 	small=values;
 	cout << "Pick a number and a unit (c,m,i,f) :" << endl;
-while(cin >> values >> unit && unit !=' ')
+while(cin >> values >> unit)
 	{
 		//if(i==o)
 	//{
@@ -44,7 +45,6 @@ while(cin >> values >> unit && unit !=' ')
 		//}
 //}
 //	}
-numberofvalues++;
 	if(values<small)
 {
 	small = values;
@@ -59,25 +59,30 @@ switch (unit) {
 	case 'c':
 	valuesinmeter=values*metercm;
 	cout << values << "cm == "<< valuesinmeter << " m" << endl ;
+	numberofvalues++;
 	allvalues.push_back(valuesinmeter);
 	break;
 	case 'm':
 	valuesinmeter=values;
 	cout << values <<"m == "<< valuesinmeter << " m" << endl ;
+	numberofvalues++;
 	allvalues.push_back(valuesinmeter);
 	break;
 	case 'i':
 	valuesinmeter=values*meterin;
 	cout << values <<"inc == "<< valuesinmeter << " m" << endl ;
+	numberofvalues++;
 	allvalues.push_back(valuesinmeter);
 	break;
 	case 'f':
 	valuesinmeter=values*meterft;
 	cout << values <<"feet == "<< valuesinmeter << " m" << endl ;
+	numberofvalues++;
 	allvalues.push_back(valuesinmeter);
 	break;
 	default:
 	cout << "Invalid unit" << endl;
+	invalidnumbers++;
 	break;
 }
 }
@@ -89,6 +94,7 @@ cout << "Smallest number: " << small << endl;
 cout << "Largest number: " << large << endl;
 cout << "Number of values: " << numberofvalues << endl;
 cout << "The sum of value in meter: " << sumofvalues << " meter" << endl;
+cout << "Number of invalid numbers: " <<invalidnumbers << endl;
 keep_window_open("|");	
 	return 0;
 }
